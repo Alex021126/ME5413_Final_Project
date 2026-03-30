@@ -128,6 +128,14 @@ After launching **Step 0**, in the second terminal:
 roslaunch me5413_world mapping.launch
 ```
 
+For a simpler one-command workflow tuned for mapping, you can also launch the simulator and GMapping together:
+
+```bash
+roslaunch me5413_world full_mapping.launch
+```
+
+This mapping workflow disables the large moving red obstacle by default, which generally produces a cleaner occupancy grid.
+
 After finishing mapping, run the following command in the thrid terminal to save the map:
 
 ```bash

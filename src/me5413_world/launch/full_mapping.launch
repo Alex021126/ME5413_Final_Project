@@ -1,0 +1,19 @@
+<launch>
+  <arg name="world_name" default="$(find me5413_world)/worlds/me5413_project_2526.world" />
+  <arg name="gui" default="true" />
+  <arg name="paused" default="false" />
+  <arg name="jackal_config" default="base" />
+  <arg name="spawn_static_box" default="false" />
+
+  <!-- Bring up the simulator in a mapping-friendly configuration. -->
+  <include file="$(find me5413_world)/launch/world.launch">
+    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)" />
+    <arg name="spawn_static_box" value="$(arg spawn_static_box)" />
+    <arg name="jackal_config" value="$(arg jackal_config)" />
+  </include>
+
+  <!-- Start the mapping stack in the same command for a simpler workflow. -->
+  <include file="$(find me5413_world)/launch/mapping.launch" />
+</launch>
