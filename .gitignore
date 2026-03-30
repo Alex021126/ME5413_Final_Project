@@ -1,4 +1,6 @@
 .vscode/
+.codex
+.DS_Store
 
 devel/
 logs/
