@@ -1,0 +1,26 @@
+# -----------------------------
+# Move Base Recovery Settings
+# -----------------------------
+shutdown_costmaps: false
+
+controller_frequency: 20
+planner_frequency: 20.0
+
+# Failure detection
+controller_patience: 15.0
+planner_patience: 5.0
+oscillation_timeout: 0.0
+oscillation_distance: 0.3
+
+# Recovery behavior
+recovery_behavior_enabled: true
+clearing_rotation_allowed: true
+
+# Recovery sequence: back off → rotate → clear costmap
+recovery_behaviors:
+  - name: backup_recovery
+    type: move_slow_and_clear/MoveSlowAndClear
+  - name: rotate_recovery
+    type: rotate_recovery/RotateRecovery
+  - name: clear_costmap
+    type: clear_costmap_recovery/ClearCostmapRecovery
