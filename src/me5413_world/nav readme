@@ -1,0 +1,6 @@
+To install
+
+sudo apt-get install ros-noetic-dwa-local-planner
+sudo apt-get install ros-noetic-jsk-rviz-plugins
+sudo apt install ros-noetic-navigation
+
