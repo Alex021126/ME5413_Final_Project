@@ -1,0 +1,24 @@
+<launch>
+
+  <!-- Launch the move_base node -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+    <!-- Load parameters for Global Costmap -->
+    <rosparam file="$(find me5413_world)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find me5413_world)/params/global_costmap_params.yaml" command="load" />
+    
+    <!-- Load parameters for Local Costmap -->
+    <rosparam file="$(find me5413_world)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find me5413_world)/params/local_costmap_params.yaml" command="load" />
+    
+    <!-- Load other move_base configuration files -->
+    <rosparam file="$(find me5413_world)/params/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find me5413_world)/params/move_base_params.yaml" command="load" />
+    
+    <!-- Set global planner and local planner -->
+    <param name="base_global_planner" type="string" value="navfn/NavfnROS"/>
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+
+  </node>
+
+</launch>
