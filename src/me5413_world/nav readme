@@ -4,3 +4,4 @@ sudo apt-get install ros-noetic-dwa-local-planner
 sudo apt-get install ros-noetic-jsk-rviz-plugins
 sudo apt install ros-noetic-navigation
 
+Put params folder in , change navigation.launch to launch folder and add amcl.launch and move_base.launch to launch/include folder
