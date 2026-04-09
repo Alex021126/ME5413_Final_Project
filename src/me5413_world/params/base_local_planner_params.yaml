@@ -14,6 +14,9 @@ TrajectoryPlannerROS:
   holonomic_robot: false
   escape_vel: -1.0
 
+  max_trans_vel: 1.5
+  max_rot_vel: 2.0
+
   # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.15
   xy_goal_tolerance: 0.25
