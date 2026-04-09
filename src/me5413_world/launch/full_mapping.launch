@@ -2,7 +2,7 @@
   <arg name="world_name" default="$(find me5413_world)/worlds/me5413_project_2526.world" />
   <arg name="gui" default="true" />
   <arg name="paused" default="false" />
-  <arg name="jackal_config" default="base" />
+  <arg name="jackal_config" default="front_laser" />
   <arg name="spawn_static_box" default="false" />
 
   <!-- Bring up the simulator in a mapping-friendly configuration. -->
