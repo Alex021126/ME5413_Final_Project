@@ -3,7 +3,7 @@
     <arg name="gui" default="true"/>
     <arg name="paused" default="false"/>
     <arg name="spawn_static_box" default="true"/>
-    <arg name="jackal_config" default="front_laser"/>
+    <arg name="jackal_config" default="gmapping_3d_velodyne"/>
 
     <!-- Using the simulation clock -->
     <param name="/use_sim_time" value="true"/>

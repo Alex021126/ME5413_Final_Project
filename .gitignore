@@ -1,0 +1,5 @@
+# Track only the source tree from the workspace root.
+*
+!.gitignore
+!/src/
+!/src/**

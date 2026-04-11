@@ -1,0 +1,13 @@
+# GMapping with a mid-mounted 3D Velodyne sensor.
+# The point cloud is filtered into a virtual 2D scan before gmapping consumes it.
+
+JACKAL_LASER=0
+JACKAL_LASER_3D=1
+JACKAL_LASER_3D_MODEL=vlp16
+JACKAL_LASER_3D_TOPIC=mid/points
+JACKAL_LASER_3D_MOUNT=mid
+JACKAL_LASER_3D_PREFIX=mid
+JACKAL_LASER_3D_PARENT=mid_mount
+JACKAL_LASER_3D_TOWER=1
+JACKAL_LASER_3D_HZ=20
+JACKAL_LASER_3D_GPU=false

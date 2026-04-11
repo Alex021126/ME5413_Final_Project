@@ -1,10 +1,17 @@
 <launch>
   <arg name="scan_topic" default="/front/scan" />
+  <arg name="cloud_topic" default="/mid/points" />
+
+  <!-- Project the Velodyne point cloud into a virtual 2D scan. -->
+  <include file="$(find me5413_world)/launch/include/project_3d_lidar_to_scan.launch">
+    <arg name="cloud_topic" value="$(arg cloud_topic)" />
+    <arg name="scan_topic" value="$(arg scan_topic)" />
+  </include>
 
   <!-- Connect the robot to a keyboard teleop controller -->
   <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" respawn="true"/>
   
-  <!-- Launch a tuned GMapping config for this project world. -->
+  <!-- Use the filtered virtual 2D scan with gmapping. -->
   <include file="$(find me5413_world)/launch/include/gmapping.launch">
     <arg name="scan_topic" value="$(arg scan_topic)" />
   </include>

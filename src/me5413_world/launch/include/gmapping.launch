@@ -6,7 +6,7 @@
     <param name="base_frame" value="base_link" />
     <param name="map_frame" value="map" />
 
-    <!-- Use every scan and update the map more frequently for tighter alignment. -->
+    <!-- Use every scan and update the map frequently for tighter alignment. -->
     <param name="throttle_scans" value="1" />
     <param name="map_update_interval" value="1.0" />
 
@@ -16,25 +16,26 @@
 
     <param name="sigma" value="0.05" />
     <param name="kernelSize" value="1" />
-    <param name="lstep" value="0.03" />
-    <param name="astep" value="0.03" />
-    <param name="iterations" value="8" />
+    <param name="lstep" value="0.02" />
+    <param name="astep" value="0.02" />
+    <param name="iterations" value="12" />
     <param name="lsigma" value="0.075" />
     <param name="ogain" value="3.0" />
-    <param name="minimumScore" value="50.0" />
+    <!-- A slightly lower score helps keep updates alive in sparse ramp geometry. -->
+    <param name="minimumScore" value="30.0" />
     <param name="lskip" value="0" />
 
-    <!-- Motion noise tuned higher than the Jackal defaults to better absorb wheel slip on ramps. -->
-    <param name="srr" value="0.02" />
-    <param name="srt" value="0.04" />
-    <param name="str" value="0.02" />
-    <param name="stt" value="0.04" />
+    <!-- Increase motion uncertainty so gmapping does not over-trust odom while climbing ramps. -->
+    <param name="srr" value="0.04" />
+    <param name="srt" value="0.08" />
+    <param name="str" value="0.04" />
+    <param name="stt" value="0.08" />
 
-    <param name="linearUpdate" value="0.05" />
-    <param name="angularUpdate" value="0.025" />
-    <param name="temporalUpdate" value="0.5" />
+    <param name="linearUpdate" value="0.03" />
+    <param name="angularUpdate" value="0.02" />
+    <param name="temporalUpdate" value="0.2" />
     <param name="resampleThreshold" value="0.5" />
-    <param name="particles" value="40" />
+    <param name="particles" value="60" />
 
     <!-- Start with bounds large enough for the full project world to reduce reallocation churn. -->
     <param name="xmin" value="-35.0" />
