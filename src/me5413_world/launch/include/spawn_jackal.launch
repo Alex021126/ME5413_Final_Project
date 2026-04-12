@@ -2,6 +2,7 @@
   <!-- Configuration of Jackal which you would like to simulate.
        See jackal_description for details. -->
   <arg name="config" default="base" />
+  <arg name="use_marker_teleop" default="false" />
 
   <!-- Load Jackal's description, controllers, and teleop nodes. -->
   <!-- <include file="$(find jackal_description)/launch/description.launch">
@@ -21,13 +22,27 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <include file="$(find jackal_control)/launch/control.launch" />
-  <include file="$(find jackal_control)/launch/teleop.launch">
+  <include file="$(find jackal_control)/launch/teleop.launch" if="$(arg use_marker_teleop)">
     <arg name="joystick" value="false" />
   </include>
 
   <!-- Spawn Jackal -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-	      args="-urdf -model jackal -param robot_description -x -22.5 -y -7.5 -z 0.1 -R 0.0 -P 0.0 -Y 0.0" />
+  <node name="urdf_spawner"
+        pkg="me5413_world"
+        type="spawn_jackal_model.py"
+        output="screen">
+    <param name="model_name" value="jackal" />
+    <param name="model_param" value="/robot_description" />
+    <param name="x" value="-22.5" />
+    <param name="y" value="-7.5" />
+    <param name="z" value="0.1" />
+    <param name="roll" value="0.0" />
+    <param name="pitch" value="0.0" />
+    <param name="yaw" value="0.0" />
+    <param name="max_retries" value="5" />
+    <param name="retry_delay" value="2.0" />
+    <param name="post_spawn_wait" value="5.0" />
+  </node>
 
   <!-- Add a static world frame -->
   <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="world_broadcast" args="0 0 0 0 0 0 1 world odom" /> -->

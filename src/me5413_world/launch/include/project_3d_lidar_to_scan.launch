@@ -1,0 +1,58 @@
+<launch>
+  <arg name="cloud_topic" default="/mid/points" />
+  <arg name="imu_topic" default="/imu/data" />
+  <arg name="scan_topic" default="/front/scan" />
+  <arg name="min_height" default="-0.12" />
+  <arg name="max_height" default="0.18" />
+  <arg name="min_range" default="1.00" />
+  <arg name="max_range" default="10.0" />
+  <arg name="num_beams" default="720" />
+  <arg name="flat_band_scale" default="1.0" />
+  <arg name="low_layer_min_height" default="-0.30" />
+  <arg name="low_layer_max_height" default="-0.12" />
+  <arg name="high_layer_min_height" default="0.18" />
+  <arg name="high_layer_max_height" default="0.45" />
+  <arg name="slope_pitch_enter_threshold" default="0.12" />
+  <arg name="slope_pitch_exit_threshold" default="0.08" />
+  <arg name="slope_transition_hold_time" default="1.0" />
+  <arg name="flat_support_layers_required" default="2" />
+  <arg name="supporting_layers_required" default="2" />
+  <arg name="allow_single_layer_low_obstacles_flat" default="true" />
+  <arg name="allow_single_layer_low_obstacles_slope" default="false" />
+  <arg name="low_obstacle_max_range" default="2.0" />
+  <arg name="low_obstacle_neighbor_diff" default="0.20" />
+  <arg name="low_obstacle_neighbor_window" default="3" />
+  <arg name="low_obstacle_min_neighbors" default="3" />
+
+  <node pkg="me5413_world"
+        type="pointcloud_to_planar_scan.py"
+        name="pointcloud_to_planar_scan"
+        output="screen">
+    <param name="cloud_topic" value="$(arg cloud_topic)" />
+    <param name="imu_topic" value="$(arg imu_topic)" />
+    <param name="scan_topic" value="$(arg scan_topic)" />
+    <param name="min_height" value="$(arg min_height)" />
+    <param name="max_height" value="$(arg max_height)" />
+    <param name="min_range" value="$(arg min_range)" />
+    <param name="max_range" value="$(arg max_range)" />
+    <param name="num_beams" value="$(arg num_beams)" />
+    <param name="flat_band_scale" value="$(arg flat_band_scale)" />
+    <param name="low_layer_min_height" value="$(arg low_layer_min_height)" />
+    <param name="low_layer_max_height" value="$(arg low_layer_max_height)" />
+    <param name="mid_layer_min_height" value="$(arg min_height)" />
+    <param name="mid_layer_max_height" value="$(arg max_height)" />
+    <param name="high_layer_min_height" value="$(arg high_layer_min_height)" />
+    <param name="high_layer_max_height" value="$(arg high_layer_max_height)" />
+    <param name="slope_pitch_enter_threshold" value="$(arg slope_pitch_enter_threshold)" />
+    <param name="slope_pitch_exit_threshold" value="$(arg slope_pitch_exit_threshold)" />
+    <param name="slope_transition_hold_time" value="$(arg slope_transition_hold_time)" />
+    <param name="flat_support_layers_required" value="$(arg flat_support_layers_required)" />
+    <param name="supporting_layers_required" value="$(arg supporting_layers_required)" />
+    <param name="allow_single_layer_low_obstacles_flat" value="$(arg allow_single_layer_low_obstacles_flat)" />
+    <param name="allow_single_layer_low_obstacles_slope" value="$(arg allow_single_layer_low_obstacles_slope)" />
+    <param name="low_obstacle_max_range" value="$(arg low_obstacle_max_range)" />
+    <param name="low_obstacle_neighbor_diff" value="$(arg low_obstacle_neighbor_diff)" />
+    <param name="low_obstacle_neighbor_window" value="$(arg low_obstacle_neighbor_window)" />
+    <param name="low_obstacle_min_neighbors" value="$(arg low_obstacle_min_neighbors)" />
+  </node>
+</launch>

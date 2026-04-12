@@ -183,9 +183,24 @@
     <xacro:property name="prefix" value="$(optenv JACKAL_LASER_3D_PREFIX ${mount})" />
     <xacro:property name="parent" value="$(optenv JACKAL_LASER_3D_PARENT ${mount}_mount)" />
     <xacro:property name="lidar_3d_model" value="$(optenv JACKAL_LASER_3D_MODEL vlp16)" />
+    <xacro:property name="lidar_3d_hz" value="$(optenv JACKAL_LASER_3D_HZ 10)" />
+    <xacro:property name="lidar_3d_gpu" value="$(optenv JACKAL_LASER_3D_GPU false)" />
+    <xacro:property name="lidar_3d_organize_cloud" value="$(optenv JACKAL_LASER_3D_ORGANIZE_CLOUD false)" />
+    <xacro:property name="lidar_3d_samples" value="$(optenv JACKAL_LASER_3D_SAMPLES 1875)" />
+    <xacro:property name="lidar_3d_min_angle" value="$(optenv JACKAL_LASER_3D_MIN_ANGLE -3.1415926535897931)" />
+    <xacro:property name="lidar_3d_max_angle" value="$(optenv JACKAL_LASER_3D_MAX_ANGLE 3.1415926535897931)" />
     <!-- Velodyne VLP16 -->
     <xacro:if value="${lidar_3d_model == 'vlp16'}">
-      <xacro:vlp16_mount topic="${topic}" tower="${tower}" prefix="${prefix}" parent_link="${parent}" >
+      <xacro:vlp16_mount topic="${topic}"
+                         tower="${tower}"
+                         prefix="${prefix}"
+                         parent_link="${parent}"
+                         hz="${lidar_3d_hz}"
+                         gpu="${lidar_3d_gpu}"
+                         organize_cloud="${lidar_3d_organize_cloud}"
+                         samples="${lidar_3d_samples}"
+                         min_angle="${lidar_3d_min_angle}"
+                         max_angle="${lidar_3d_max_angle}">
         <origin xyz="$(optenv JACKAL_LASER_3D_OFFSET 0 0 0)" rpy="$(optenv JACKAL_LASER_3D_RPY 0 0 0)" />
       </xacro:vlp16_mount>
     </xacro:if>
